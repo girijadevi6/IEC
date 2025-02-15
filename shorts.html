@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Trending Shorts</title>
+    <style>
+        
+        #shortsSection {
+            overflow-y: scroll;
+            max-height: 80vh;
+            padding: 10px;
+            border: 1px solid #ddd;
+            scroll-snap-type: y mandatory; /* Ensures one video snaps into view at a time */
+        }
+
+        .short {
+            margin-bottom: 20px;
+            scroll-snap-align: start; /* Each video aligns perfectly when scrolled */
+            text-align: center;
+        }
+
+        .short video {
+            width: 360px; /* Reduced width */
+            height: 500px; /* Increased height for vertical display */
+            object-fit: cover;
+            display: block;
+            margin: 0 auto; /* Center align */
+            border-radius: 10px; /* Optional: rounded corners */
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Optional: shadow effect */
+        }
+
+        /* Style for the item link */
+        .short a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .short a:hover {
+            background-color: #0056b3;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1>All Trending Shorts</h1>
+    <div id="shortsSection">
+        {% for trend in trends %}
+        <div class="short {% if loop.first %}active{% endif %}">
+            <video controls muted poster="{{ trend['thumbnail_url'] }}">
+                <source src="{{ trend['video_url'] }}" type="video/mp4">
+            </video>
+            <a href="{{ trend['item_link'] }}" target="_blank">{{ trend['item_name'] }}</a>
+        </div>
+        {% endfor %}
+    </div>
+    
+
+    <script>
+        // Script for autoplay and scrolling
+        document.addEventListener("DOMContentLoaded", () => {
+            const shorts = document.querySelectorAll(".short video");
+            if (shorts.length > 0) {
+                shorts[0].play(); // Play the first video
+            }
+
+            window.addEventListener("scroll", () => {
+                shorts.forEach((video) => {
+                    const rect = video.getBoundingClientRect();
+                    if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

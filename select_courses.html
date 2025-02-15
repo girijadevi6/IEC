@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Courses</title>
+    <style>
+        .course-btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .course-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Courses for {{ cuisine }}</h1>
+    <form action="/generate_meal_plan" method="POST">
+        <input type="hidden" name="cuisine" value="{{ cuisine }}">
+        {% for course in courses %}
+            <label>
+                <input type="checkbox" name="course" value="{{ course }}">
+                <span class="course-btn">{{ course }}</span>
+            </label>
+        {% endfor %}
+        <button type="submit">Generate Meal Plan</button>
+    </form>
+</body>
+</html>

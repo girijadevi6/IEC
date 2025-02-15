@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgba(175, 221, 229, 0.9); /* Light semi-transparent background */
+            color: #003135; /* Dark text */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup {
+            background-color: #024950; /* Popup background */
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            width: 100%;
+        }
+        h1 {
+            color:white; /* Heading color */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #AFDDE5; /* Light text */
+        }
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #0FA4AF; /* Border color */
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #AFDDE5; /* Input background */
+            color: #003135; /* Input text */
+        }
+        button {
+            background-color: #964734; /* Button color */
+            color: #AFDDE5; /* Button text color */
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0FA4AF; /* Button hover color */
+            color: #003135; /* Hover text color */
+        }
+    </style>
+</head>
+<body>
+    <div class="popup">
+        <h1>Signup</h1>
+        <form method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            <button type="submit">Signup</button>
+        </form>
+    </div>
+</body>
+</html>

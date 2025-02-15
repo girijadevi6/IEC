@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #222;
+            color: white;
+            padding: 10px;
+            text-align: right;
+        }
+
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        table th {
+            background-color: #333;
+            color: white;
+        }
+
+        table td a, table td form button {
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color:black;
+        }
+
+        table td a.update-button {
+            background-color: #4CAF50;
+        }
+
+        table td a.update-button:hover {
+            background-color: #45a049;
+        }
+
+        table td form button.delete-button {
+            background-color: #f44336;
+            border: none;
+            cursor: pointer;
+        }
+
+        table td form button.delete-button:hover {
+            background-color: #d32f2f;
+        }
+
+        .add-item-link {
+            display: block;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+            width: 200px;
+            background-color: #333;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .add-item-link:hover {
+            background-color: #444;
+        }
+
+        .trends-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        }
+
+        .trends-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-evenly;
+        }
+
+        /* Each trend card */
+        .trend-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+
+            /* Adjusted card size */
+            height: 55vh; /* Increased height */
+            width: 20vw;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .trend-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Video styling */
+        .trend-card video {
+            width: 100%;
+            height: 80%;
+            object-fit: cover;
+            border-bottom: 1px solid #ddd;
+        }
+
+        /* Item info section */
+        .item-info {
+            padding: 10px;
+            text-align: center;
+        }
+
+        .item-info p {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            margin: 0 0 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .item-info a {
+            text-decoration: none;
+            font-size: 12px;
+            color: #007bff;
+        }
+
+        .item-info a:hover {
+            text-decoration: underline;
+        }
+      
+        .see-all-trends {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .see-all-trends .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .see-all-trends .btn:hover {
+            background-color: #0056b3;
+        }
+     
+        #shortsSection {
+            overflow-y: scroll;
+            max-height: 80vh;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .short {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            margin-bottom: 10px;
+        }
+
+        .short video {
+            width: 100%;
+            height: auto;
+            max-height: 80%;
+            object-fit: cover;
+        }
+
+        .short-info {
+            text-align: center;
+            color: white;
+            margin-top: 10px;
+        }
+
+        .short-info p {
+            font-size: 18px;
+            margin: 0;
+        }
+
+        .short-info a {
+            font-size: 16px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .short-info a:hover {
+            text-decoration: underline;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #222;
+            padding: 10px 20px;
+        }
+
+        .left-menu, .right-menu {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .left-menu select {
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        .right-menu a, .left-menu a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background-color: #444;
+            transition: background 0.3s;
+        }
+
+        .right-menu a:hover, .left-menu a:hover {
+            background-color: #666;
+        }
+
+        /* Generate Meal Plan Button */
+        .generate-meal {
+            background: linear-gradient(45deg, #ff5733, #ff8d1a);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .generate-meal:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #ff8d1a, #ff5733);
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Welcome to Fusion Market</h1>
+    
+    <!-- Navigation for login/signup and categories dropdown -->
+    <div class="nav-container">
+        <div class="left-menu">
+            <form method="GET" action="/">
+                <select name="category" onchange="this.form.submit()">
+                    <option value="">All Categories</option>
+                    {% for category in categories %}
+                        <option value="{{ category }}" {% if category == selected_category %}selected{% endif %}>
+                            {{ category }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </form>
+            <form action="/select_cuisine">
+                <button type="submit" class="generate-meal">Generate Meal Plan</button>
+            </form>
+        </div>
+
+        {% if 'email' in session and session['email'] == 'admin@gmail.com' %}
+        <a href="/add" class="add-item-link">Add New Item</a>
+    {% endif %}
+
+        <div class="right-menu">
+            {% if logged_in %}
+                <a href="/logout">Logout</a>
+                <a href="/my_orders">My Orders</a>
+            {% else %}
+                <a href="/signup">Signup</a>
+                <a href="/login">Login</a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Trends Section (Top of the Website) -->
+    <div class="trends-section">
+        <h2>Trending Shorts</h2>
+        <div class="trends-container">
+            {% for trend in trends %}
+            <div class="trend-card">
+                <video controls poster="{{ trend['thumbnail_url'] }}">
+                    <source src="{{ trend['video_url'] }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="item-info">
+                    <p>{{ trend['item_name'] }}</p>
+                    <a href="{{ trend['item_link'] }}" target="_blank">Buy Now</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button id="seeAllTrendsBtn" onclick="openShortsPage()">See All Trends</button>
+
+    </div>
+
+    
+    
+
+    <!-- Display Items by Category -->
+    {% if selected_category %}
+        <section>
+            <h2 style="text-align: center; color: #333;">{{ selected_category }}</h2>
+            <table>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Available Pieces</th>
+                    <th>Sold</th>
+                    <th>Action</th>
+                </tr>
+                {% for item in items %}
+                    <tr>
+                        <td><img src="{{ item['image_url'] }}" alt="{{ item['name'] }}" width="100"></td>
+                        <td>{{ item['name'] }}</td>
+                        <td>{{ item['price'] }}</td>
+                        <td>{{ item['available_pieces'] }}</td>
+                        <td>{{ 'Yes' if item['sold'] else 'No' }}</td>
+                        <td>
+                            {% if 'email' in session and session['email'] == 'admin@gmail.com' %}
+                                <a href="/update/{{ item['id'] }}" class="update-button">Update</a>
+                                <form action="/delete/{{ item['id'] }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="delete-button">Delete</button>
+                                </form>
+                            {% elif not item['sold'] and item['available_pieces'] > 0 %}
+                                <form action="/order/{{ item['id'] }}" method="POST" style="display:inline;">
+                                    <input type="number" name="quantity" min="1" max="{{ item['available_pieces'] }}" required>
+                                    <button type="submit">Order Now</button>
+                                </form>
+                            {% else %}
+                                <span class="out-of-stock">Out of Stock</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </section>
+    {% else %}
+        <!-- Display All Categories if No Category is Selected -->
+        {% for category, items in categories.items() %}
+        <section>
+            <h2 style="text-align: center; color: #333;">{{ category }}</h2>
+            <table>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Available Pieces</th>
+                    <th>Sold</th>
+                    <th>Action</th>
+                </tr>
+                {% for item in items %}
+                    <tr>
+                        <td><img src="{{ item['image_url'] }}" alt="{{ item['name'] }}" width="100"></td>
+                        <td>{{ item['name'] }}</td>
+                        <td>{{ item['price'] }}</td>
+                        <td>{{ item['available_pieces'] }}</td>
+                        <td>{{ 'Yes' if item['sold'] else 'No' }}</td>
+                        <td>
+                            {% if 'email' in session and session['email'] == 'admin@gmail.com' %}
+                                <a href="/update/{{ item['id'] }}" class="update-button">Update</a>
+                                <form action="/delete/{{ item['id'] }}" method="POST" style="display:inline;">
+                                    <button type="submit" class="delete-button">Delete</button>
+                                </form>
+                            {% elif not item['sold'] and item['available_pieces'] > 0 %}
+                                <form action="/order/{{ item['id'] }}" method="POST" style="display:inline;">
+                                    <input type="number" name="quantity" min="1" max="{{ item['available_pieces'] }}" required>
+                                    <button type="submit">Order Now</button>
+                                </form>
+                            {% else %}
+                                <span class="out-of-stock">Out of Stock</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </section>
+        {% endfor %}
+    {% endif %}
+
+    <script>
+        function openShortsPage() {
+            // Open a new window for the shorts page
+            const newWindow = window.open("/shorts_page", "_blank");  // Changed to the correct route "/shorts_page"
+            if (!newWindow) {
+                alert("Please allow popups for this website to view the shorts.");
+            }   
+        }
+    </script>
+
+    
+</body>
+</html>

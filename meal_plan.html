@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Meal Plan</title>
+    <style>
+        /* Styling for the meal plan */
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: white;
+        }
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        table th {
+            background-color: #333;
+            color: white;
+        }
+        .meal-day {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Weekly Meal Plan</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Day</th>
+                <th>Course</th>
+                <th>Meal Name</th>
+                <th>Description</th>
+                <th>Prep Time (mins)</th>
+                <th>Ingredients</th>
+                <th>Instructions</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for meal in meal_plan %}
+            <tr>
+                <td>{{ meal['Day'] }}</td>
+                <td>{{ meal['Course'] }}</td>
+                <td>{{ meal['Meal Name'] }}</td>
+                <td>{{ meal['Description'] }}</td>
+                <td>{{ meal['Prep Time (mins)'] }}</td>
+                <td>{{ meal['Ingredients'] | safe }}</td>
+                <td>{{ meal['Instructions'] }}</td>
+                <td><img src="{{ meal['Image URL'] }}" alt="Meal Image" style="max-width:100px;"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
